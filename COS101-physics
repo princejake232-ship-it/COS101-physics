@@ -1,0 +1,71 @@
+class PhysicsSolver:
+    """A collection of methods to solve 5 common physics formulas."""
+    
+    @staticmethod
+    def newtons_second_law(mass=None, acceleration=None, force=None):
+        """Solves Newton's Second Law: F = m * a"""
+        if force is None and mass is not None and acceleration is not None:
+            return f"Force (F) = {mass * acceleration} N"
+        elif mass is None and force is not None and acceleration is not None:
+            return f"Mass (m) = {force / acceleration} kg"
+        elif acceleration is None and force is not None and mass is not None:
+            return f"Acceleration (a) = {force / mass} m/s^2"
+        else:
+            return "Error: Provide exactly two of the three parameters (mass, acceleration, force)."
+
+    @staticmethod
+    def kinetic_energy(mass=None, velocity=None, ke=None):
+        """Solves Kinetic Energy: KE = 0.5 * m * v^2"""
+        if ke is None and mass is not None and velocity is not None:
+            return f"Kinetic Energy (KE) = {0.5 * mass * (velocity ** 2)} J"
+        elif mass is None and ke is not None and velocity is not None:
+            return f"Mass (m) = {(2 * ke) / (velocity ** 2)} kg"
+        elif velocity is None and ke is not None and mass is not None:
+            return f"Velocity (v) = {((2 * ke) / mass) ** 0.5} m/s"
+        else:
+            return "Error: Provide exactly two of the three parameters (mass, velocity, ke)."
+
+    @staticmethod
+    def ohms_law(voltage=None, current=None, resistance=None):
+        """Solves Ohm's Law: V = I * R"""
+        if voltage is None and current is not None and resistance is not None:
+            return f"Voltage (V) = {current * resistance} V"
+        elif current is None and voltage is not None and resistance is not None:
+            return f"Current (I) = {voltage / resistance} A"
+        elif resistance is None and voltage is not None and current is not None:
+            return f"Resistance (R) = {voltage / current} ohms"
+        else:
+            return "Error: Provide exactly two of the three parameters (voltage, current, resistance)."
+
+    @staticmethod
+    def gravitational_potential_energy(mass=None, gravity=9.81, height=None, pe=None):
+        """Solves Gravitational Potential Energy: PE = m * g * h"""
+        if pe is None and mass is not None and height is not None:
+            return f"Potential Energy (PE) = {mass * gravity * height} J"
+        elif mass is None and pe is not None and height is not None:
+            return f"Mass (m) = {pe / (gravity * height)} kg"
+        elif height is None and pe is not None and mass is not None:
+            return f"Height (h) = {pe / (mass * gravity)} m"
+        else:
+            return "Error: Provide the required parameters to solve for the missing variable."
+
+    @staticmethod
+    def work_done(force=None, distance=None, work=None):
+        """Solves Work Done: W = F * d"""
+        if work is None and force is not None and distance is not None:
+            return f"Work (W) = {force * distance} J"
+        elif force is None and work is not None and distance is not None:
+            return f"Force (F) = {work / distance} N"
+        elif distance is None and work is not None and force is not None:
+            return f"Distance (d) = {work / force} m"
+        else:
+            return "Error: Provide exactly two of the three parameters (force, distance, work)."
+
+# --- Example Usage ---
+if __name__ == "__main__":
+    print("--- Physics Solver Results ---")
+    print(PhysicsSolver.newtons_second_law(mass=10, acceleration=5))       # Solve for Force
+    print(PhysicsSolver.kinetic_energy(mass=2, velocity=4))                # Solve for KE
+    print(PhysicsSolver.ohms_law(current=2, resistance=5))                 # Solve for Voltage
+    print(PhysicsSolver.gravitational_potential_energy(mass=5, height=10)) # Solve for PE
+    print(PhysicsSolver.work_done(force=20, distance=3))                   # Solve for Work
